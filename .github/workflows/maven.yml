@@ -47,3 +47,7 @@ jobs:
 
       - name: 'Build project'
         run: mvn -B clean verify -Pci
+
+      - name: 'Test submission'
+        run: ./test.sh ${{ github.event.pull_request.user.login }}
+        if: github.event_name == 'pull_request'
